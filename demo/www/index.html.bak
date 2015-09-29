@@ -1,0 +1,898 @@
+	<!-- 
+
+Things to add
+
+
+
+
+
+- Look at implementing a tabbed page for details page (main info on main tab, 
+  item/material type specific info on 2nd tab)
+
+
+
+- Remove links that won't be used in demo
+
+
+
+
+
+
+
+
+
+- Add "Call" button next to phone number !___Need icons to work
+
+- Show icons for count bubbles across the top !___Need icons to work
+
+- One button on screen to "receive delivery"/update status to next available status. Ditto onsite -> completed
+
+-->
+
+
+<!doctype html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="">
+
+    <title>Matrak Beta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.2/jquery.mobile.structure-1.4.2.min.css">
+    <link rel="stylesheet" href="css/themes/custom-theme.css"/>
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body>
+
+    <!-- Home page -->
+    <div data-role="page" data-theme="b" id="pageHome">
+    	
+    	<div class="sidemenubtn">
+                <a href="#nav-panel"><img src="img/icons/slidemenu.png"></a>
+      </div>
+      
+      <div data-role="header" data-position="fixed" >
+            
+        <div class="logo">
+           <img src="img/logo-transparent.png">
+        </div>
+
+        </div><!-- /header -->
+
+        <div>
+            <div id="mainMenu">
+                <div class="table-row">
+                    <div class="table-cell">
+                        <a href="#pageDeliveries">
+                        <img src="img/icons/deliveries2.png"></a>
+                        <label>Deliveries</label>
+                    </div>
+                    <div class="table-cell">
+                        <a href="#pageMaterials">
+                        <img src="img/icons/materials2.png"></a>
+                        <label>Materials</label>
+                    </div>
+                    <div class="table-cell">
+                        <img src="img/icons/analytics2.png">
+                        <label>Analytics</label>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">
+                        <a href="#pageFViewer">
+                        <img src="img/icons/documents2.png"></a>
+                        <label>Documents</label>
+                    </div>
+                    <div class="table-cell">
+                        <img src="img/icons/trades2.png">
+                        <label>Settings</label>
+                    </div>
+                    <div id="hrefSupport" class="table-cell">
+                        <img src="img/icons/support2.png">
+                        <label>Support</label>
+                    </div>
+                </div>
+            </div> 
+        </div>   
+
+
+        
+        <div data-role="panel" data-display="overlay" id="nav-panel">
+        <ul data-role="listview">
+            <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                <li>Deliveries</li>
+                <li><a href="#panel-responsive-page2">Autocomplete</a></li>
+                <li><a href="#panel-responsive-page2">Buttons</a></li>
+                <li><a href="#panel-responsive-page2">Checkboxes</a></li>
+                <li><a href="#panel-responsive-page2">Collapsibles</a></li>
+                <li><a href="#panel-responsive-page2">Sign out...</a></li>
+        </ul>
+    		</div><!-- /panel -->
+
+    </div><!-- /Homepage -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Deliveries page -->
+    <div data-role="page" id="pageDeliveries" class="faded-in">
+        <div data-role="header" data-position="fixed">
+            <h1>Deliveries</h1>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true">
+                <li><a href="" id="hrefFindDeliveries">Find Deliveries</a></li>
+                <li><a href="#pageTodaysDeliveries" id="hrefTodaysDeliveries">Today's Deliveries</a></li>
+                <li><a href="" id="hrefExpectedDeliveries">Expected Deliveries</a></li>
+                <li><a href="" id="hrefReceivedDeliveries">Received Deliveries</a></li>
+            </ul>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Update Complete</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <!-- Today's Deliveries -->
+    <div data-role="page" id="pageTodaysDeliveries">
+        <div data-role="header" data-position="fixed">
+        <a href="#pageDeliveries" class="ui-btn-left" >Back</a>
+        <a href="" id="listSelect" class="ui-btn-right">Select</a>
+            <h1 id="listHeader">Today's Deliveries</h1>
+        </div><!-- /header -->
+     
+        <div data-role="content" id="pageListContent">
+            <ul data-role="listview" id="listpageList" data-inset="true" data-theme="a" data-filter="true">
+           <li><a href="#pageWindowDelivery" class="listitemDeliveries ui-btn ui-btn-icon-right ui-icon-carat-r"><h2>Windows</h2><p><strong>Delivery ID: VC607</strong></p><p>Delivery Date: 06/01/2015</p><p class="ui-li-aside"><strong>7:30</strong>AM</p></a></li> 
+           <li><a href="" class="listitemDeliveries ui-btn ui-btn-icon-right ui-icon-carat-r"><h2>Plaster</h2><p><strong>Delivery ID: BA100</strong></p><p>Delivery Date: 06/01/2015</p><p class="ui-li-aside"><strong>9:15</strong>AM</p></a></li> 
+           <li><a href="" class="listitemDeliveries ui-btn ui-btn-icon-right ui-icon-carat-r"><h2>Ducts</h2><p><strong>Delivery ID: CW117</strong></p><p>Delivery Date: 06/01/2015</p><p class="ui-li-aside"><strong>10:30</strong>AM</p></a></li> 
+            </ul>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Update Complete</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <!-- Window Delivery page -->
+    <div data-role="page" id="pageWindowDelivery">
+        <div data-role="header" data-position="fixed">
+        <a href="#pageTodaysDeliveries" class="ui-btn-left" >Back</a>
+        <div class="ui-btn-right" >
+       		<a href="#" class="ui-btn" id="btnReceivedWD">Set Received</a>
+       		<a href="#pageDeliveryEdit" class="ui-btn">Edit</a>
+      	</div>
+            <h1 id="detailHeader">VC607</h1>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+<div data-role="collapsibleset">
+  <div data-role="collapsible" class="ui-field-contain" data-collapsed="false" id="listItemDetails">
+    <h4>Delivery Details</h4>
+            <ul data-role="listview" data-inset="false" id="listItemDetailsList">
+           <li class="ui-li-static ui-body-inherit"><b>Delivery ID:</b> VC607</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Status:</b> In Transit</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Delivery Date:</b> 06/01/2015</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Delivery Time:</b> 7:30AM</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Company:</b> Masterlite Installations</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Driver Name:</b> Steve Johnson</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Driver Contact No:</b> 0421 948 109</li> 
+            </ul>
+  </div>
+  <div data-role="collapsible" id="listItemInventory">
+    <h4>Inventory</h4>
+            <ul data-role="listview" data-inset="false" id="listItemInventoryList">
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r">Stillage: F3-L00-002</a></li>
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r">Stillage: F3-L00-004</a></li>
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r">Stillage: F2-L01-002</a></li>
+
+            </ul>
+  </div>
+</div>
+        </div><!-- /content -->
+ 
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Update Complete</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <!-- Delivery Edit page -->
+    <div data-role="page" id="pageDeliveryEdit">
+        <div data-role="header" data-position="fixed">
+        <a href="#pageWindowDelivery" class="ui-btn-left" >Cancel</a>
+        <a href="#pageWindowDelivery2" id="btnSave" class="ui-btn-right" >Save</a>
+            <h1>VC607</h1>
+        </div><!-- /header -->
+     
+     
+        <div data-role="content">
+        	<div data-role="collapsible" class="ui-field-contain" data-collapsed="false" id="listItemDetails">
+						<form>
+							<ul data-role="listview" data-inset="false" id="listEditItemDetails" class="ui-listview">
+                 <li data-role="fieldcontain"><label for="input0"><b>Delivery ID:</b></label><input type="text" name="input0" value="VC607"</li>
+                 <li data-role="fieldcontain"><label for="select0"><b>Status:</b></label><select name="select0" id="edit_f0">
+                            <option value="Preparing">Preparing</option>
+                            <option value="Ready">Ready</option>
+                            <option selected="selected" value="In Transit">In Transit</option>
+                            <option value="Loading">Loading</option>
+                            <option value="Received">Received</option>
+                 </select></li>
+                 <li data-role="fieldcontain"><label for="input1"><b>Delivery Date:</b></label><input type="text" name="input1" value="06/01/15"></li>
+                 <li data-role="fieldcontain"><label for="input2"><b>Delivery Time:</b></label><input type="text" name="input2" value="7:30AM"</li>
+                 <li data-role="fieldcontain"><label for="input3"><b>Company:</b></label><input type="text" name="input3" value="Masterlite Installations" id="edit_f0"></li>
+                 <li data-role="fieldcontain"><label for="input4"><b>Driver Name:</b></label><input type="text" name="input4" value="Steve Johnson"</li>
+                 <li data-role="fieldcontain"><label for="input5"><b>Driver Contact No:</b></label><input type="text" name="input5" value="0421 948 109"</li>
+              </ul>
+
+					</form>
+					</div>
+        </div><!-- /content -->
+ 
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Update Complete</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <!-- Window Delivery 2 page -->
+    <div data-role="page" id="pageWindowDelivery2">
+        <div data-role="header" data-position="fixed">
+        <a href="#pageTodaysDeliveries" class="ui-btn-left" >Back</a>
+        <a href="" class="ui-btn-right" >Edit</a>
+            <h1 id="detailHeader">VC607</h1>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+<div data-role="collapsibleset">
+  <div data-role="collapsible" data-collapsed="false" id="listItemDetails">
+    <h4>Delivery Details</h4>
+            <ul data-role="listview" data-inset="false" id="listItemDetailsList">
+           <li class="ui-li-static ui-body-inherit"><b>Delivery ID:</b> VC607</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Status:</b> Received</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Delivery Date:</b> 06/01/2015</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Delivery Time:</b> 7:30AM</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Company:</b> Masterlite Installations</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Driver Name:</b> Steve Johnson</li> 
+           <li class="ui-li-static ui-body-inherit"><b>Driver Contact No:</b> 0421 948 109</li> 
+            </ul>
+  </div>
+  <div data-role="collapsible" id="listItemInventory">
+    <h4>Inventory</h4>
+            <ul data-role="listview" data-inset="false" id="listItemInventoryList">
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slideup">Stillage: F3-L00-002</a></li>
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slideup">Stillage: F3-L00-004</a></li>
+                <li><a href="#pageDetail" class="listitemMaterials ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="slideup">Stillage: F2-L01-002</a></li>
+
+            </ul>
+  </div>
+</div>
+        </div><!-- /content -->
+ 
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Update Complete</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <!-- Browse Materials page -->
+    <div data-role="page" id="pageBrowse">
+        <div data-role="header" data-position="fixed">
+            <h1>Browse Materials</h1>
+            <a href="#pageMaterials" class="ui-btn-left">Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+        <ul>
+        <li><a href="#one" Selected="true" data-ajax="false">By Trade</a></li>
+        <li><a href="#two" data-ajax="false">By Level</a></li>
+        </ul>
+        </div>
+        <div id="one">
+            <ul data-role="listview" id="browseList1" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Bricklayers<span class="ui-li-count">40%</span><span class="ui-li-count">0%</span><span class="ui-li-count">9%</span><span class="ui-li-count">51%</span></a></li>
+                <li><a href="">Carpet Layers<span class="ui-li-count">76%</span><span class="ui-li-count">0%</span><span class="ui-li-count">19%</span><span class="ui-li-count">5%</span></a></li>
+                <li><a href="">Concrete<span class="ui-li-count">0%</span><span class="ui-li-count">4%</span><span class="ui-li-count">4%</span><span class="ui-li-count">92%</span></a></li>
+                <li><a href="">Electricians<span class="ui-li-count">53%</span><span class="ui-li-count">0%</span><span class="ui-li-count">26%</span><span class="ui-li-count">21%</span></a></li>
+                <li><a href="">Duct Fitters<span class="ui-li-count">18%</span><span class="ui-li-count">8%</span><span class="ui-li-count">11%</span><span class="ui-li-count">63%</span></a></li>
+                <li><a href="">Insulation<span class="ui-li-count">47%</span><span class="ui-li-count">2%</span><span class="ui-li-count">13%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Landscapers<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Painters<span class="ui-li-count">85%</span><span class="ui-li-count">2%</span><span class="ui-li-count">2%</span><span class="ui-li-count">11%</span></a></li>
+                <li><a href="">Plasterers<span class="ui-li-count">63%</span><span class="ui-li-count">1%</span><span class="ui-li-count">19%</span><span class="ui-li-count">17%</span></a></li>
+                <li><a href="">Plumbers<span class="ui-li-count">14%</span><span class="ui-li-count">0%</span><span class="ui-li-count">17%</span><span class="ui-li-count">69%</span></a></li>
+                <li><a href="">Security Installers<span class="ui-li-count">92%</span><span class="ui-li-count">0%</span><span class="ui-li-count">2%</span><span class="ui-li-count">6%</span></a></li>
+                <li><a href="">Shaft Workers<span class="ui-li-count">0%</span><span class="ui-li-count">4%</span><span class="ui-li-count">6%</span><span class="ui-li-count">90%</span></a></li>
+                <li><a href="#pageBrowse2">Window Installers<span class="ui-li-count">51%</span><span class="ui-li-count">3%</span><span class="ui-li-count">18%</span><span class="ui-li-count">28%</span></a></li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Ground Floor<span class="ui-li-count">2%</span><span class="ui-li-count">3%</span><span class="ui-li-count">1%</span><span class="ui-li-count">94%</span></a></li>
+                <li><a href="">Level 1<span class="ui-li-count">3%</span><span class="ui-li-count">6%</span><span class="ui-li-count">2%</span><span class="ui-li-count">89%</span></a></li>
+                <li><a href="">Level 2<span class="ui-li-count">7%</span><span class="ui-li-count">1%</span><span class="ui-li-count">12%</span><span class="ui-li-count">80%</span></a></li>
+                <li><a href="">Level 3<span class="ui-li-count">13%</span><span class="ui-li-count">12%</span><span class="ui-li-count">19%</span><span class="ui-li-count">66%</span></a></li>
+                <li><a href="">Level 4<span class="ui-li-count">27%</span><span class="ui-li-count">4%</span><span class="ui-li-count">21%</span><span class="ui-li-count">48%</span></a></li>
+                <li><a href="">Level 5<span class="ui-li-count">45%</span><span class="ui-li-count">1%</span><span class="ui-li-count">15%</span><span class="ui-li-count">39%</span></a></li>
+                <li><a href="">Level 6<span class="ui-li-count">80%</span><span class="ui-li-count">1%</span><span class="ui-li-count">7%</span><span class="ui-li-count">12%</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <!-- Browse Materials 2 page -->
+    <div data-role="page" id="pageBrowse2">
+        <div data-role="header" data-position="fixed">
+            <h1>Window Installers</h1>
+            <a href="#pageBrowse" class="ui-btn-left">Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+        <ul>
+        <li><a href="#one" Selected="true" data-ajax="false">By Level</a></li>
+        <li><a href="#two" data-ajax="false">By Material Type</a></li>
+        </ul>
+        </div>
+        <div id="one">
+            <ul data-role="listview" id="browseList1" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Ground Floor<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="#pageBrowse3">Level 1<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">3%</span><span class="ui-li-count">97%</span></a></li>
+                <li><a href="">Level 2<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Level 3<span class="ui-li-count">25%</span><span class="ui-li-count">2%</span><span class="ui-li-count">23%</span><span class="ui-li-count">50%</span></a></li>
+                <li><a href="">Level 4<span class="ui-li-count">64%</span><span class="ui-li-count">0%</span><span class="ui-li-count">16%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Level 5<span class="ui-li-count">98%</span><span class="ui-li-count">0%</span><span class="ui-li-count">2%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Level 6<span class="ui-li-count">100%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span></a></li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Curtain Wall<span class="ui-li-count">35%</span><span class="ui-li-count">0%</span><span class="ui-li-count">22%</span><span class="ui-li-count">43%</span></a></li>
+                <li><a href="">CW Brackets<span class="ui-li-count">35%</span><span class="ui-li-count">0%</span><span class="ui-li-count">21%</span><span class="ui-li-count">42%</span></a></li>
+                <li><a href="">Sub Framing<span class="ui-li-count">33%</span><span class="ui-li-count">0%</span><span class="ui-li-count">18%</span><span class="ui-li-count">51%</span></a></li>
+                <li><a href="">Panels<span class="ui-li-count">41%</span><span class="ui-li-count">0%</span><span class="ui-li-count">21%</span><span class="ui-li-count">38%</span></a></li>
+                <li><a href="">Strip Windows with Spindle Glass<span class="ui-li-count">50%</span><span class="ui-li-count">0%</span><span class="ui-li-count">2%</span><span class="ui-li-count">48%</span></a></li>
+                <li><a href="">Strip Windows with Jockey Sash Frame<span class="ui-li-count">23%</span><span class="ui-li-count">3%</span><span class="ui-li-count">8%</span><span class="ui-li-count">56%</span></a></li>
+                <li><a href="">Strip Windows with Alumininium Louver Blade<span class="ui-li-count">100%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">24 In. Hex Screws<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">21%</span><span class="ui-li-count">79%</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <!-- Browse Materials 3 page -->
+    <div data-role="page" id="pageBrowse3">
+        <div data-role="header" data-position="fixed">
+            <h1>Level 1</h1>
+            <a href="#pageBrowse2" class="ui-btn-left">Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+        <ul>
+        <li><a href="#one" Selected="true" data-ajax="false">By Zone</a></li>
+        <li><a href="#two" data-ajax="false">By Material Type</a></li>
+        </ul>
+        </div>
+        <div id="one">
+            <ul data-role="listview" id="browseList1" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Zone A<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count spn-inprogress">9%</span><span class="ui-li-count">91%</span></a></li>
+                <li><a href="">Zone B<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count spn-inprogress">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Zone C<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count spn-inprogress">0%</span><span class="ui-li-count">100%</span></a></li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Curtain Wall<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">CW Brackets<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Sub Framing<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Panels<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Strip Windows with Spindle Glass<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">21%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Strip Windows with Jockey Sash Frame<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">3%</span><span class="ui-li-count">97%</span></a></li>
+                <li><a href="">Strip Windows with Alumininium Louver Blade<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">2 In. Hex Screws<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+<!-- Browse Materials 4 page -->
+    <div data-role="page" id="pageBrowse4">
+        <div data-role="header" data-position="fixed">
+            <h1>On Site</h1>
+            <a href="#pageBrowse3" class="ui-btn-left">Back</a>
+            <a href="#pageSelector" id="listSelect" class="ui-btn-right">Select</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        
+        <div id="one">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true" data-filter="true">
+                <li><a href="#pageMaterialDetails">SWJ401-01</a></li>
+                <li><a href="">SWJ401-02</a></li>
+                <li><a href="">SWJ401-03</a></li>
+                <li><a href="">SWJ401-04</a></li>
+            </ul>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+<!-- Browse Materials 5 page -->
+
+		<div data-role="page" id="pageMaterialDetails">
+      <div data-role="header" data-position="fixed">
+      	<a href="#pageBrowse4" class="ui-btn-left" >Back</a>
+       	<a href="" class="ui-btn-right" >Edit</a>
+        <h1 id="detailHeader">VC607</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+				<div data-role="collapsibleset">
+  				<div data-role="collapsible" data-collapsed="false" id="listItemDetails">
+    				<h4>Material Details</h4>
+    				
+            <ul data-role="listview" data-inset="false" id="listItemDetailsList">
+           		<li class="ui-li-static ui-body-inherit"><b>Serial #:</b> SWJ401-01</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Status:</b> Received</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Location:</b> Level 1</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Zone:</b> Zone A</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Description:</b> Strip Windows with Jockey Sash Frame</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Company:</b> Masterlite Installations</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Category:</b> Panels</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Comments:</b> Had to be resent, damaged in transit</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Length:</b> 450mm</li> 
+            </ul>
+				  </div>
+				</div>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+
+    <!-- Selector page -->
+    <div data-role="page" id="pageSelector">
+        <div data-role="header" data-position="fixed" id="select-header">
+            <h1>Select Items..</h1>
+            <a href="#pageBrowse4" class="ui-btn-left" >Cancel</a>
+            <div class="ui-btn-right">
+            	<a href="#pageSelector" class="ui-btn" id="btnSelectAll">Select All</a>
+            	<a href="#pageBulkUpdate" class="ui-btn">Edit</a>
+            </div>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        	<div id="pageListCheckboxes">
+
+            <fieldset id="listpageCB" data-role="controlgroup" data-iconpos="right" class="ui-controlgroup">
+            	<div class="ui-controlgroup-controls">
+            		<label for="cb1" class="ui-btn">SWJ401-01</label>
+                    <input type="checkbox" class= "cbSelect" id="cb1" data-type="material">
+                <label for="cb2" class="ui-btn">SWJ401-02</label>
+                    <input type="checkbox" class= "cbSelect" id="cb2" data-type="material">
+                <label for="cb3" class="ui-btn">SWJ401-03</label>
+                    <input type="checkbox" class= "cbSelect" id="cb3" data-type="material">
+                <label for="cb4" class="ui-btn">SWJ401-04</label>
+                    <input type="checkbox" class= "cbSelect" id="cb4" data-type="material">
+              </div>      
+            
+            </fieldset>
+          </div>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Updating...</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+<!-- Bulk Update page -->
+		<div data-role="page" id="pageBulkUpdate">
+      <div data-role="header" data-position="fixed">
+      	<h1 id="detailHeader">Bulk Update</h1>
+      	<a href="#pageBrowse4" class="ui-btn-left" >Cancel</a>
+       	<a href="#pageBrowse5" class="ui-btn-right" >Save</a>
+        
+      </div><!-- /header -->
+      
+      <div data-role="content">
+      	
+      	<div data-role="collapsible" class="ui-field-contain" data-collapsed="false" id="listItemDetails">
+      		
+					<ul data-role="listview" data-inset="false" id="listEditItemDetails">
+						
+                        <li data-role="fieldcontain" >
+                            <label for="name1"><b>Serial #:</b></label>
+                            <input type="text" name="name1" id="name1" value="SWJ401-01, SWJ401-02" disabled="true">
+                        </li>
+                        <li data-role="fieldcontain"><label for="2"><b>Status</b></label>
+                	<select name="2">
+                		<option>Any</option>
+            				<option>Not Started</option>
+            				<option>Manufactured</option>
+            				<option>In Transit</option>
+            				<option selected="selected">On Site</option>
+            				<option>Installed</option>
+            				<option>Complete</option>
+            				<option>Defective</option>
+                	</select></li>
+                
+                
+								<li data-role="fieldcontain"><label for="3"><b>Location</b></label><select name="3">
+                		<option>Any</option>
+            				<option>Ground Floor</option>
+            				<option selected="selected" >Level 1</option>
+            				<option>Level 2</option>
+            				<option>Level 3</option>
+            				<option>Level 4</option>
+            				<option>Level 5</option>
+            				<option>Level 6</option>=                
+                	</select></li>
+								
+								
+								<li data-role="fieldcontain"><label for="4"><b>Zone</b></label><select name="4">
+                		<option>Any</option>
+            				<option selected="selected">Zone A</option>
+            				<option>Zone B</option>
+            				<option>Zone C</option>
+            				<option>Zone D</option>
+            				<option>Zone E</option>
+            				<option>Zone F</option>
+            				<option>Zone G</option>
+            				<option>Zone H</option>
+            				<option>Zone I</option>
+            				<option>Zone J</option>
+            				<option>Zone K</option>
+            				<option>Zone L</option>
+                	</select></li>
+                        <li data-role="fieldcontain" >
+                            <label for="name1"><b>Description:</b></label>
+                            <input type="text"  value="Strip Windows with Jockey Sash Frame">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="name1"><b>Company:</b></label>
+                            <input type="text" name="name1" id="name1" value="Masterlite Installations">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="name1"><b>Category:</b></label>
+                            <input type="text" name="name1" id="name1" value="Panels">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="name1"><b>Comments:</b></label>
+                            <input type="text" name="name1" id="name1" value="Scratch on lower edge">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="name1"><b>Length:</b></label>
+                            <input type="text" name="name1" id="name1" value="450mm">
+                        </li>
+                    </ul>
+
+
+				  </div>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+<!--After saving bulk update page-->
+		<div data-role="page" id="pageBrowse5">
+        <div data-role="header" data-position="fixed">
+            <h1>On Site</h1>
+            <a href="#pageBrowse6" class="ui-btn-left">Back</a>
+            <a href="#pageSelector" id="listSelect" class="ui-btn-right">Select</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        
+        <div id="one">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li>No results</li>
+            </ul>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+<!-- This shows the updated # of defective records -->    
+    <div data-role="page" id="pageBrowse6">
+        <div data-role="header" data-position="fixed">
+            <h1>Level 1</h1>
+            <a href="#pageBrowse7" class="ui-btn-left">Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+        <ul>
+        <li><a href="#one" Selected="true" data-ajax="false">By Zone</a></li>
+        <li><a href="#two" data-ajax="false">By Material Type</a></li>
+        </ul>
+        </div>
+        <div id="one">
+            <ul data-role="listview" id="browseList1" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Zone A<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-inprogress">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Zone B<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-inprogress">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Zone C<span class="ui-li-count spn-complete">0%</span><span class="ui-li-count spn-inprogress">0%</span><span class="ui-li-count spn-defective">0%</span><span class="ui-li-count">100%</span></a></li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Curtain Wall<span class="ui-li-count">5%</span><span class="ui-li-count">73%</span><span class="ui-li-count">16%</span><span class="ui-li-count">11%</span></a></li>
+                <li><a href="">CW Brackets<span class="ui-li-count">5%</span><span class="ui-li-count">87%</span><span class="ui-li-count">13%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Sub Framing<span class="ui-li-count">5%</span><span class="ui-li-count">93%</span><span class="ui-li-count">7%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Panels<span class="ui-li-count">5%</span><span class="ui-li-count">79%</span><span class="ui-li-count">12%</span><span class="ui-li-count">9%</span></a></li>
+                <li><a href="">Strip Windows with Spindle Glass<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Strip Windows with Jockey Sash Frame<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Strip Windows with Alumininium Louver Blade<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">2 In. Hex Screws<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+        </div><!-- /content -->
+
+    </div>
+    <!-- Final browse materials page-->
+    <div data-role="page" id="pageBrowse7">
+        <div data-role="header" data-position="fixed">
+            <h1>Window Installers</h1>
+            <a href="#pageBrowse" class="ui-btn-left">Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+        <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+        <ul>
+        <li><a href="#one" Selected="true" data-ajax="false">By Level</a></li>
+        <li><a href="#two" data-ajax="false">By Material Type</a></li>
+        </ul>
+        </div>
+        <div id="one">
+            <ul data-role="listview" id="browseList1" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Ground Floor<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="#pageBrowse3">Level 1<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Level 2<span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">100%</span></a></li>
+                <li><a href="">Level 3<span class="ui-li-count">25%</span><span class="ui-li-count">2%</span><span class="ui-li-count">23%</span><span class="ui-li-count">50%</span></a></li>
+                <li><a href="">Level 4<span class="ui-li-count">64%</span><span class="ui-li-count">0%</span><span class="ui-li-count">16%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Level 5<span class="ui-li-count">98%</span><span class="ui-li-count">0%</span><span class="ui-li-count">2%</span><span class="ui-li-count">0%</span></a></li>
+                <li><a href="">Level 6<span class="ui-li-count">100%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span><span class="ui-li-count">0%</span></a></li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" id="browseList2" class="ui-li-twoBubble" data-inset="true">
+                <li><a href="">Curtain Wall<span class="ui-li-count">5%</span><span class="ui-li-count">26%</span><span class="ui-li-count">22%</span><span class="ui-li-count">52%</span></a></li>
+                <li><a href="">CW Brackets<span class="ui-li-count">5%</span><span class="ui-li-count">35%</span><span class="ui-li-count">38%</span><span class="ui-li-count">27%</span></a></li>
+                <li><a href="">Sub Framing<span class="ui-li-count">5%</span><span class="ui-li-count">64%</span><span class="ui-li-count">18%</span><span class="ui-li-count">18%</span></a></li>
+                <li><a href="">Panels<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Strip Windows with Spindle Glass<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Strip Windows with Jockey Sash Frame<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">Strip Windows with Alumininium Louver Blade<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+                <li><a href="">24 In. Hex Screws<span class="ui-li-count">5%</span><span class="ui-li-count">39%</span><span class="ui-li-count">21%</span><span class="ui-li-count">40%</span></a></li>
+            </ul>
+        </div>
+        </div>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+    
+    
+    <!-- Floorplan Viewer page -->
+    <div data-role="page" data-theme="c" data-fullscreen="true" id="pageFViewer">
+        <div data-role="header" data-position="fixed" data-fullscreen="true" id="fViewerHeader">
+            <h1>Floorplan Viewer</h1>
+            <a href="#nav-panel" data-icon="bars" class="ui-btn-left">Menu</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+
+    <div data-role="panel" data-display="push" data-theme="a" id="nav-panel">
+        <ul data-role="listview">
+        <li><a href="#panel-responsive-page2">Jump To Floorplan</a></li>
+        <li><a href="#panel-responsive-page2">Next</a></li>
+        <li><a href="#panel-responsive-page2">Previous</a></li>
+        <li><a href="#panel-responsive-page2">View Details</a></li>
+        <li><a href="#panel-responsive-page2">View Materials</a></li>
+        <li><a href="#panel-responsive-page2">Open in Google Drive...</a></li>
+        <li><a href="#panel-responsive-page2">Send As Email...</a></li>
+        </ul>
+        </div>
+
+        <div data-role="content" id="fgestureArea">
+            <img id="fplan" src="img/fp.jpg">
+        </div>
+
+        <div data-role="footer" data-id="footerPersistent" data-fullscreen="true" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="c">
+            <h1>Level 4 Floorplan A1.5 Electricians</h1>
+        </div><!-- /footer -->
+
+    </div><!-- /page -->
+
+    <!-- Materials page -->
+    <div data-role="page" id="pageMaterials">
+        <div data-role="header" data-position="fixed">
+            <h1>Materials</h1>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+     
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#pageSearch" id="hrefFindMaterials">Find Materials</a></li>
+                <li><a href="#pageBrowse" id="hrefBrowseMaterials">Browse Materials</a></li>
+                <li><a href="#pageList" id="hrefRecentlyDeliveredMaterials">Recently Delivered</a></li>
+                <li><a href="#pageList" id="hrefRecentlyInstalledMaterials">Recently Installed</a></li>
+                <li><a href="#pageList" id="hrefDefectiveMaterials">Defected Items</a></li>
+            </ul>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-id="footerPersistent" data-position="fixed" style="text-align:center; font-weight:normal;" data-theme="a">
+            <p class="footerText" font-weight: normal;>Updating...</p>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <!-- Search page -->
+    <div data-role="page" id="pageSearch">
+        <div data-role="header" data-position="fixed">
+            <h1>Search</h1>
+            <a href="#pageMaterials" id="searchBack" class="ui-btn-left" >Back</a>
+            <a href="#pageHome" class="ui-btn-right">Home</a>
+        </div><!-- /header -->
+        <div data-role="content">
+            <ul data-role="listview" id="searchType" data-inset="true">
+            <li data-role="fieldcontain"><label for="selectSearchType">Search For:</label><select name="selectType" id="selectSearchType">
+            	<option selected="selected">Any</option>
+            	<option>Curtain Wall</option>
+            	<option>CW Brackets</option>
+            	<option>Sub Framing</option>
+            	<option>Panels</option>
+            	<option>Strip Windows with Spindle Glass</option>
+            	<option>Strip Windows with Jockey Sash Frame</option>
+            	<option>Strip Windows with Alumininium Louver Blade</option>
+            	<option>2 In. Hex Screws</option>
+            	</select></li>
+            
+            </ul>
+            <ul data-role="listview" id="searchPageList" data-inset="true">
+                <li data-role="fieldcontain"><label for="1">Serial #:</label><input type="text" name="1"></li>
+                <li data-role="fieldcontain"><label for="2">Status</label>
+                	<select name="2">
+                		<option selected="selected">Any</option>
+            				<option>Not Started</option>
+            				<option>Manufactured</option>
+            				<option>In Transit</option>
+            				<option>On Site</option>
+            				<option>Installed</option>
+            				<option>Complete</option>
+            				<option>Defective</option>
+                	</select></li>
+                
+                
+								<li data-role="fieldcontain"><label for="3">Location</label><select name="3">
+                		<option selected="selected">Any</option>
+            				<option>Ground Floor</option>
+            				<option>Level 1</option>
+            				<option>Level 2</option>
+            				<option>Level 3</option>
+            				<option>Level 4</option>
+            				<option>Level 5</option>
+            				<option>Level 6</option>=                
+                	</select></li>
+								
+								
+								<li data-role="fieldcontain"><label for="4">Zone</label><select name="4">
+                		<option selected="selected">Any</option>
+            				<option>Zone A</option>
+            				<option>Zone B</option>
+            				<option>Zone C</option>
+            				<option>Zone D</option>
+            				<option>Zone E</option>
+            				<option>Zone F</option>
+            				<option>Zone G</option>
+            				<option>Zone H</option>
+            				<option>Zone I</option>
+            				<option>Zone J</option>
+            				<option>Zone K</option>
+            				<option>Zone L</option>
+                	</select></li>
+								<li data-role="fieldcontain"><label for="5">Description</label><input type="text" name="1"></li>
+								<li data-role="fieldcontain"><label for="6">Company</label><input type="text" name="1"></li>
+								<li data-role="fieldcontain"><label for="7">Category</label><input type="text" name="1"></li>
+								<li data-role="fieldcontain"><label for="8">Comments</label><input type="text" name="1"></li>
+								<li data-role="fieldcontain"><label for="9">Length</label><input type="text" name="1"></li>
+            </ul>
+    		<input type="button" data-theme="a" data-icon="check" data-iconpos="right" class="btnSearch" value="Search">
+        </div><!-- /content -->
+
+        
+    </div><!-- /page -->
+
+    <!-- Search Results page -->
+    <div data-role="page" id="pageSearchResults">
+        <div data-role="header" data-position="fixed">
+        <a href="#pageSearch" id="listBack" class="ui-btn-left" >Back</a>
+        <a href="#pageDetail" id="listSelect" class="ui-btn-right">Select</a>
+            <h1 id="listHeader"></h1>
+        </div><!-- /header -->
+     
+        <div data-role="content" id="pageListContent">
+            <ul data-role="listview" id="listpageList" data-inset="true" data-theme="a" data-filter="true">
+            <li><a href="#pageMaterial2Details">ABC123-01</a></li>
+            </ul>
+        </div><!-- /content -->
+
+        
+    </div><!-- /page -->
+<!-- Browse Materials 5 page -->
+
+		<div data-role="page" id="pageMaterial2Details">
+      <div data-role="header" data-position="fixed">
+      	<a href="#pageBrowse4" class="ui-btn-left" >Back</a>
+      	<div class="ui-btn-right" >
+       		<a href="" class="ui-btn">Set Installed</a>
+       		<a href="" class="ui-btn">Edit</a>
+      	</div>
+        <h1 id="detailHeader">ABC123-01</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+				<div data-role="collapsibleset">
+  				<div data-role="collapsible" data-collapsed="false" id="listItemDetails">
+    				<h4>Material Details</h4>
+    				
+            <ul data-role="listview" data-inset="false" id="listItemDetailsList">
+           		<li class="ui-li-static ui-body-inherit"><b>Serial #:</b> ABC123-01</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Status:</b> On Site</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Location:</b> Level 4</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Zone:</b> Zone F</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Description:</b> 25m Cat5 Cabling</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Company:</b> Sparky Eletrical</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Category:</b> Panels</li> 
+           		<li class="ui-li-static ui-body-inherit"><b>Comments:</b> </li> 
+           		<li><a href="#pageFViewer">View Floorplan (Level 4 A1.5)</a></li>
+            </ul>
+				  </div>
+				</div>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<!-- For speeding up mobile button click responsiveness...needs performance testing-->
+		<script type="text/javascript" src="energize.js"></script>	
+    <script src="js/jquery-2.1.1.min.js"  type="text/javascript"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    <!--<script src="js/fastclick.js" type="text/javascript"></script>-->
+    <script src="js/interact.js"></script>
+    <script src="js/fviewer.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
+

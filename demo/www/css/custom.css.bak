@@ -1,0 +1,197 @@
+h1 {
+    font-weight: bold;
+}
+
+#pageHome{
+
+}
+
+#pageHome .nav-panel{
+	float:left;
+}
+
+#pageHome .ui-header{
+    margin: 7% auto auto auto;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageHome .sidemenubtn img {
+		
+    padding: 5px;
+    /*display:inline-block;*/
+    display:none;
+    margin: 5%;
+}
+
+
+
+#mainMenu {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0;
+  align-self: flex-end;
+  border-spacing: 0.5rem;
+  width: 100%;
+}
+#mainMenu .table-row {
+    display: flex;
+}
+#mainMenu .table-cell {
+  padding-top: 10px;
+  padding-bottom: 3px;
+  margin: 1px;
+  background-color: rgba(0, 0, 0, .3);
+  color: rgba(0, 0, 0, .3);
+    font-weight: none;
+    text-shadow: none;
+    width: 100%;
+    position:relative;
+}
+#mainMenu label {
+    text-align: center;
+    font-size: 9pt;
+    font-weight: none;
+    color: rgba(255, 255, 255, .8);
+    
+}
+#mainMenu img {
+    padding: 5px;
+    display:block;
+    margin:auto;
+    opacity: 0.75;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pageBulkUpdate .ui-field-contain input{
+    text-align:right;
+}
+
+
+#pageFViewer .ui-content{
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 0;
+background: black;
+}
+#pageFViewer .ui-header {
+    background: rgba(35, 35, 35, 0.8);
+    border: none;
+}
+#pageFViewer h1 {
+	 font-family: arial;
+    color: #eeeeee;
+	font-weight: normal;
+	font-size: 16px;
+	text-shadow: 0 0 0 #232323;
+}
+
+#pageFViewer img{
+    width: 100%;
+    transform-origin:center center;
+}
+#fplan.reset {
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+/*Count Bubbles on Site Progress*/
+.ui-li-twoBubble .ui-li-count:nth-child(4)
+{
+    float: right;
+    width: 2em;
+    background-color:#c4df9b;
+    color: black;
+    border-radius:1.8em;
+    text-shadow: none;
+}
+.ui-li-twoBubble .ui-li-count:nth-child(3)
+{
+    margin-right: 3.5em;
+    width: 2em;
+    background-color:#6dcff6;
+    color: black;
+    border-radius:1.8em;
+    text-shadow: none;
+}
+.ui-li-twoBubble .ui-li-count:nth-child(2)
+{
+    margin-right: 7em;
+    width: 2em;
+    background-color:#f7941d;
+    color: black;
+    border-radius:1.8em;
+    text-shadow: none;
+}
+.ui-li-twoBubble .ui-li-count:nth-child(1)
+{
+    margin-right: 10.5em;
+    width: 2em;
+    background-color:#efefef;
+    color: black;
+    border-radius:1.8em;
+    text-shadow: none;
+}
+
+.ui-icon-truck {
+	background-color:black;
+	background-image: url(images\truck-white.png)!important;
+	color: black;
+}
+
+#truckthing .ui-icon {
+	background: url(images\truck-white.png)!important;
+	background-size: 18px 18px !important
+
+}
